@@ -1,0 +1,536 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/AydanMartinez-SS/ALGEBRA-LINEAL/blob/main/Tarea3\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 11,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4RUtwgy59oik",
+        "outputId": "86671aa7-b841-4df3-e305-f17f3e6393e5"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Requirement already satisfied: nacal in /usr/local/lib/python3.10/dist-packages (0.1.30)\n",
+            "Requirement already satisfied: sympy>=1.1.0 in /usr/local/lib/python3.10/dist-packages (from nacal) (1.12)\n",
+            "Requirement already satisfied: mpmath>=0.19 in /usr/local/lib/python3.10/dist-packages (from sympy>=1.1.0->nacal) (1.3.0)\n"
+          ]
+        }
+      ],
+      "source": [
+        "!pip install --target=$nb_path nacal\n",
+        "from nacal import *"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## ***Tarea 3***\n",
+        "\n",
+        "\n",
+        "### Propiedades de linealidad en el vector.\n",
+        "\n",
+        "\n",
+        "\n",
+        "### A(b+c)=Ab+Ac\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "_pAdQ4Ly9u-2"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Definimos matrices y vectores."
+      ],
+      "metadata": {
+        "id": "pLnms1zzdlcB"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Matrices\n",
+        "f = Vector([1,2,3])\n",
+        "d = Vector([8,3,6])\n",
+        "p = Vector([4,5,1])\n",
+        "A = Matrix([f,d,p])\n",
+        "print(A)\n",
+        "A\n",
+        "i = Vector([6,1,0])\n",
+        "g = Vector([0,4,8])\n",
+        "o = Vector([8,15,13])\n",
+        "B = Matrix([i,g,o])\n",
+        "print(B)\n",
+        "B\n",
+        "#Vectores\n",
+        "b = Vector([9,6,2])\n",
+        "c = Vector([12,6,5])\n",
+        "c\n"
+      ],
+      "metadata": {
+        "id": "9W421wzAe-6E",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 81
+        },
+        "outputId": "4ff7e8b9-38d1-45c9-9b81-283cefadc44a"
+      },
+      "execution_count": 14,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Matrix([Vector([1, 2, 3]), Vector([8, 3, 6]), Vector([4, 5, 1])])\n",
+            "Matrix([Vector([6, 1, 0]), Vector([0, 4, 8]), Vector([8, 15, 13])])\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Vector([12, 6, 5])"
+            ],
+            "text/html": [
+              "<p style=\"text-align:center;\">$\\begin{pmatrix}12\\\\ 6\\\\ 5\\end{pmatrix}$</p>"
+            ],
+            "image/png": "$\\begin{pmatrix}12\\\\ 6\\\\ 5\\end{pmatrix}$",
+            "text/latex": "$\\begin{pmatrix}12\\\\ 6\\\\ 5\\end{pmatrix}$"
+          },
+          "metadata": {},
+          "execution_count": 14
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Haciendo la propiedad:"
+      ],
+      "metadata": {
+        "id": "3v6XF3ladNp7"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "op1 = (b+c)\n",
+        "op2 = A*op1\n",
+        "print(op2)\n",
+        "\n",
+        "op3 = A*b+A*c\n",
+        "print(op3)\n",
+        "op2"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 81
+        },
+        "id": "UlqJzpcGefDc",
+        "outputId": "7357e066-21d0-4536-c4e5-ec470ce2ebc4"
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Vector([145, 113, 142])\n",
+            "Vector([145, 113, 142])\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Vector([145, 113, 142])"
+            ],
+            "text/html": [
+              "<p style=\"text-align:center;\">$\\begin{pmatrix}145\\\\ 113\\\\ 142\\end{pmatrix}$</p>"
+            ],
+            "image/png": "$\\begin{pmatrix}145\\\\ 113\\\\ 142\\end{pmatrix}$",
+            "text/latex": "$\\begin{pmatrix}145\\\\ 113\\\\ 142\\end{pmatrix}$"
+          },
+          "metadata": {},
+          "execution_count": 15
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "$\\begin{pmatrix}145\\\\ 113\\\\ 142\\end{pmatrix}$"
+      ],
+      "metadata": {
+        "id": "vKCyBpx9pMTO"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### (b+c)A=bA+cA"
+      ],
+      "metadata": {
+        "id": "4GCFruBLoMUb"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "opx = (b+c)*A\n",
+        "print(opx)\n",
+        "opx2 = b*A+c*A\n",
+        "print(opx2)\n",
+        "opx2"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 81
+        },
+        "id": "7-vaAT26obj5",
+        "outputId": "1c1a0268-3f7d-405e-bcd3-79dd13d45c4b"
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Vector([66, 246, 151])\n",
+            "Vector([66, 246, 151])\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Vector([66, 246, 151])"
+            ],
+            "text/html": [
+              "<p style=\"text-align:center;\">$\\begin{pmatrix}66\\\\ 246\\\\ 151\\end{pmatrix}$</p>"
+            ],
+            "image/png": "$\\begin{pmatrix}66\\\\ 246\\\\ 151\\end{pmatrix}$",
+            "text/latex": "$\\begin{pmatrix}66\\\\ 246\\\\ 151\\end{pmatrix}$"
+          },
+          "metadata": {},
+          "execution_count": 16
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "$\\begin{pmatrix}66\\\\ 246\\\\ 151\\end{pmatrix}$"
+      ],
+      "metadata": {
+        "id": "G-7grczgnSqi"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### ***A(λb) = λ(Ab)***\n",
+        "\n",
+        "*Haciendo la propiedad utilizando el número 2 como escalar*"
+      ],
+      "metadata": {
+        "id": "2V05CMpPniqh"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "op4 = A*(3*b)\n",
+        "print(op4)\n",
+        "op5 = 3*(A*b)\n",
+        "print(op5)\n",
+        "op5"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 81
+        },
+        "id": "uVSoekyQoFvN",
+        "outputId": "e3849833-06f5-4c5a-db70-241d8bd79945"
+      },
+      "execution_count": 22,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Vector([195, 138, 195])\n",
+            "Vector([195, 138, 195])\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Vector([195, 138, 195])"
+            ],
+            "text/html": [
+              "<p style=\"text-align:center;\">$\\begin{pmatrix}195\\\\ 138\\\\ 195\\end{pmatrix}$</p>"
+            ],
+            "image/png": "$\\begin{pmatrix}195\\\\ 138\\\\ 195\\end{pmatrix}$",
+            "text/latex": "$\\begin{pmatrix}195\\\\ 138\\\\ 195\\end{pmatrix}$"
+          },
+          "metadata": {},
+          "execution_count": 22
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "$\\begin{pmatrix}195\\\\ 138\\\\ 195\\end{pmatrix}$"
+      ],
+      "metadata": {
+        "id": "5I52yYBi93Gr"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### (λb)A = λ(bA)"
+      ],
+      "metadata": {
+        "id": "AizlObilp4Aq"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "op6 = (2*b)*A\n",
+        "print(op6)\n",
+        "op7 = 2*(b*A)\n",
+        "print(op7)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "v2jQsLR8qPL-",
+        "outputId": "7775c7eb-47ed-4f45-e409-621c9e3b2610"
+      },
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Vector([54, 204, 136])\n",
+            "Vector([54, 204, 136])\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Otras propiedades:\n",
+        "\n",
+        "### A(Bc)=[A(B|1); ... A(B|n);]c"
+      ],
+      "metadata": {
+        "id": "2yUJ9C61-gCQ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "op8 = (B|1)*A\n",
+        "print(op8)\n",
+        "op9 = (B|2)*A\n",
+        "print(op9)\n",
+        "op10 = (B|3)*A\n",
+        "print(op10)\n",
+        "op11 = op8*c\n",
+        "print(op11)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tl-MkTIH_sYm",
+        "outputId": "d52f29db-94e7-43f4-d2d1-8a6117d538bf"
+      },
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Vector([8, 51, 29])\n",
+            "Vector([32, 60, 28])\n",
+            "Vector([77, 187, 120])\n",
+            "547\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Lineal en la matriz\n",
+        "# (A + B)c = Ac + Bc"
+      ],
+      "metadata": {
+        "id": "y2ZsvppeumyH"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "op15 = (A+B)*c\n",
+        "print(op15)\n",
+        "\n",
+        "op16 = A*c + B*c\n",
+        "print(op16)\n",
+        "op16"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 81
+        },
+        "id": "S-p3sOwQutRc",
+        "outputId": "93bf0eb1-e8a2-4a0a-9ff6-47883da02caa"
+      },
+      "execution_count": 19,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Vector([192, 178, 190])\n",
+            "Vector([192, 178, 190])\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Vector([192, 178, 190])"
+            ],
+            "text/html": [
+              "<p style=\"text-align:center;\">$\\begin{pmatrix}192\\\\ 178\\\\ 190\\end{pmatrix}$</p>"
+            ],
+            "image/png": "$\\begin{pmatrix}192\\\\ 178\\\\ 190\\end{pmatrix}$",
+            "text/latex": "$\\begin{pmatrix}192\\\\ 178\\\\ 190\\end{pmatrix}$"
+          },
+          "metadata": {},
+          "execution_count": 19
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "$\\begin{pmatrix}192\\\\ 178\\\\ 190\\end{pmatrix}$"
+      ],
+      "metadata": {
+        "id": "ogPOMG5I8-QT"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### (λA)b = λ(Ab)\n",
+        "\n",
+        "Escalar 3."
+      ],
+      "metadata": {
+        "id": "aabLtbytwA0I"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "op17 = (3*A)*b\n",
+        "print(op17)\n",
+        "\n",
+        "op18 = 3*(A*b)\n",
+        "print(op18)\n",
+        "op18"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 81
+        },
+        "id": "bKJrOcUywFQ-",
+        "outputId": "2a6c5d47-e4dd-48f1-997f-20eaf2812fdd"
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Vector([195, 138, 195])\n",
+            "Vector([195, 138, 195])\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Vector([195, 138, 195])"
+            ],
+            "text/html": [
+              "<p style=\"text-align:center;\">$\\begin{pmatrix}195\\\\ 138\\\\ 195\\end{pmatrix}$</p>"
+            ],
+            "image/png": "$\\begin{pmatrix}195\\\\ 138\\\\ 195\\end{pmatrix}$",
+            "text/latex": "$\\begin{pmatrix}195\\\\ 138\\\\ 195\\end{pmatrix}$"
+          },
+          "metadata": {},
+          "execution_count": 18
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "$\\begin{pmatrix}195\\\\ 138\\\\ 195\\end{pmatrix}$"
+      ],
+      "metadata": {
+        "id": "2A7kI5_l9Il5"
+      }
+    }
+  ]
+}
